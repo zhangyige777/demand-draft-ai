@@ -1,10 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // 引入了 Loader2, Copy, Lock 等新图标用于功能区
 import { Shield, Zap, DollarSign, FileText, ArrowRight, CheckCircle2, Loader2, Copy, Lock } from 'lucide-react';
 
 export default function FreelanceLandingPage() {
+  // --- SEO 补丁开始 ---
+  useEffect(() => {
+    document.title = "Free AI Demand Letter Generator | Get Paid Faster (No Lawyer Needed)";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Create a professional, legally persuasive demand letter in 60 seconds. The #1 AI tool for freelancers to recover unpaid invoices without legal fees.");
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = "description";
+      meta.content = "Create a professional, legally persuasive demand letter in 60 seconds. The #1 AI tool for freelancers to recover unpaid invoices without legal fees.";
+      document.head.appendChild(meta);
+    }
+  }, []);
+  // --- SEO 补丁结束 ---
   const [formData, setFormData] = useState({
     clientName: '',
     amount: '',
